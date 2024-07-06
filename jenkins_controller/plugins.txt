@@ -59,7 +59,6 @@ mina-sshd-api-common:2.10.0-69.v28e3e36d18eb_
 mina-sshd-api-core:2.10.0-69.v28e3e36d18eb_
 okhttp-api:4.11.0-157.v6852a_a_fa_ec11
 pam-auth:1.10
-pipeline-aws:1.43
 pipeline-build-step:505.v5f0844d8d126
 pipeline-github-lib:42.v0739460cda_c4
 pipeline-graph-analysis:202.va_d268e64deb_3

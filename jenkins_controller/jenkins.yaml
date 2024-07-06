@@ -16,7 +16,7 @@ jenkins:
         ssh:
           credentialsId: "jenkins_agent"
           host: "jenkins_agent"
-          port: 2222
+          port: 22
           sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
       name: "agent"
       remoteFS: "/home/jenkins/agent"

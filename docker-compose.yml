@@ -1,4 +1,8 @@
 version: '2.4'
+networks:
+  shared_network:
+    name: shared_network
+
 services:
   jenkins:
     build: jenkins_controller
@@ -10,6 +14,8 @@ services:
       - ./jenkins_controller/jenkins.yaml:/usr/share/jenkins/ref/jenkins.yaml
       - ./jenkins_controller/jobs:/usr/share/jenkins/ref/jobs
     restart: always
+    networks:
+      - shared_network
 
   jenkins_agent:
     depends_on:
@@ -23,7 +29,9 @@ services:
     environment:
       - JENKINS_AGENT_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCaJxXl+C4GsmIcrsXQ+mqS/t9SNsFrtj5LffdnNr8+9a40UUHDX1mKe26U8oSarCciLYEtXWsWtl1VmQS6JAdVI5vZKS2J0Nt6oe+AH9y2PhL6wtqUsel2aJHUk8w13Dfkt+w6tZBQxCuzBDvWRt6hsprVuJvWoICMZanVOoXb+BfJx9133mG/uviF/rgtEqn5CqTbHWN1cUs+jei0GOlfyQr/GR7P5cP6baxe5yxCebohlgbYvDrwUT2ZBSlJHIaqbrbeBF/yigCcWCA9z46PubKc/qIcDY5qeFuldy0mqEdpMILDLjcrtidnp4wvRa8cxZl4w9fNYGwK8C56/b9n
     restart: always
-    
+    networks:
+      - shared_network
+
   sonarqube:
     depends_on:
       - jenkins
@@ -32,6 +40,8 @@ services:
     ports:
       - "9000:9000"
     restart: always
+    networks:
+      - shared_network
 
   selenium_hub:
     depends_on:
@@ -43,6 +53,8 @@ services:
     - "4443:4443"
     - "4444:4444"
     restart: always
+    networks:
+      - shared_network
 
   firefox:
     image: selenium/node-firefox
@@ -54,6 +66,8 @@ services:
     - SE_EVENT_BUS_PUBLISH_PORT=4442
     - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
     restart: always
+    networks:
+      - shared_network
 
   gitlab:
     image: 'gitlab/gitlab-ce:latest'
@@ -66,6 +80,8 @@ services:
       - './gitlab/logs:/var/log/gitlab'
       - './gitlab/data:/var/opt/gitlab'
     restart: always
+    networks:
+      - shared_network
 
   jira:
     image: 'atlassian/jira-software:latest'
@@ -75,3 +91,5 @@ services:
     volumes:
       - './jira:/var/atlassian/application-data/jira'
     restart: always
+    networks:
+      - shared_network

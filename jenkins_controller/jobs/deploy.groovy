@@ -1,4 +1,4 @@
-pipelineJob('app') {
+pipelineJob('deploy') {
     definition {
         cpsScm {
             scm {
@@ -7,8 +7,8 @@ pipelineJob('app') {
                         credentials("")
                         url("https://github.com/KoRnZYSIEK/np-app")
                     }
-                    branches('main')
-                    scriptPath('Jenkinsfile')
+                    branches('deploy')
+                    scriptPath('Jenkinsfile_azure')
                 }
             }
         }

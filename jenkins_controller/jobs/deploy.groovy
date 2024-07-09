@@ -7,7 +7,7 @@ pipelineJob('deploy') {
                         credentials("")
                         url("https://github.com/KoRnZYSIEK/np-app")
                     }
-                    branches('deploy')
+                    branches('main')
                     scriptPath('Jenkinsfile_azure')
                 }
             }

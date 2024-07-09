@@ -11,7 +11,7 @@ services:
     restart: always
     networks:
       - shared_network
-
+  
   jenkins_agent:
     depends_on:
       - jenkins
@@ -26,7 +26,7 @@ services:
     restart: always
     networks:
       - shared_network
-
+  
   sonarqube:
     depends_on:
       - jenkins
@@ -37,7 +37,7 @@ services:
     restart: always
     networks:
       - shared_network
-
+  
   selenium_hub:
     depends_on:
       - jenkins
@@ -50,7 +50,7 @@ services:
     restart: always
     networks:
       - shared_network
-
+  
   firefox:
     image: selenium/node-firefox
     container_name: firefox
@@ -63,7 +63,7 @@ services:
     restart: always
     networks:
       - shared_network
-
+  
   gitlab:
     image: 'gitlab/gitlab-ce:latest'
     container_name: gitlab
@@ -75,9 +75,23 @@ services:
       - './gitlab/logs:/var/log/gitlab'
       - './gitlab/data:/var/opt/gitlab'
     restart: always
+    environment:
+      - EXTERNAL_URL="http://localhost:8929"
     networks:
       - shared_network
-
+  
+  gitlab-runner:
+    image: 'gitlab/gitlab-runner:latest'
+    container_name: gitlab-runner
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - './gitlab-runner:/etc/gitlab-runner'
+    restart: always
+    networks:
+      - shared_network
+    depends_on:
+      - gitlab
+  
   jira:
     image: 'atlassian/jira-software:latest'
     container_name: jira

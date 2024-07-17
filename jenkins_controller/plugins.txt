@@ -1,3 +1,4 @@
+ansicolor:1.0.4
 ant:497.v94e7d9fffa_b_9
 antisamy-markup-formatter:162.v0e6ec0fcfcf6
 apache-httpcomponents-client-4-api:4.5.14-208.v438351942757
@@ -82,6 +83,7 @@ pipeline-rest-api:2.33
 pipeline-stage-step:305.ve96d0205c1c6
 pipeline-stage-tags-metadata:2.2144.v077a_d1928a_40
 pipeline-stage-view:2.33
+pipeline-utility-steps:2.16.0
 plain-credentials:143.v1b_df8b_d3b_e48
 plugin-util-api:3.4.0
 prism-api:1.29.0-8

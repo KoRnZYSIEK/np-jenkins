@@ -52,6 +52,7 @@ jaxb:2.3.9-1
 jdk-tool:73.vddf737284550
 jersey2-api:2.42-147.va_28a_44603b_d5
 jira:3.13
+jira-integration:5.3.0-37.v13c5b_5fb_e71b_
 jjwt-api:0.11.5-77.v646c772fddb_0
 jnr-posix-api:3.1.18-1
 job-dsl:1.85
